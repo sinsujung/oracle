@@ -1,0 +1,41 @@
+Java
+- 제품명
+- 회사명 > 썬 > 오라클
+
+Oracle Database
+- 제품명
+- 회사명
+
+Database
+- 데이터베이스 > 데이터 집합
+- 관리, 운영, 보안 등 ..  > 데이터베이스 관리 시스템
+- Database Management System
+- 오라클(DB + DBMS) > DB ? DBMS?
+
+
+백그라운드 프로세스
+- 서비스(Service)
+- 데몬(Daemon)
+
+오라클 실행/종료/상태확인
+- Win + R > services.msc >
+
+1. OracleServiceXE > 데이터베이스
+
+2. OracleXETNSListener > 리스너(클라이언트 도구와 연결)
+
+
+SQL Developer
+- 데이터베이스 클라이언트 툴
+- 눈에 안보이는 오라클에 연결해서 조작하는 프로그램
+- 개발자 <-> 중계인(데이터베이스 클라이언트) <-> 오라클(데이터베이스 서버)
+
+
+
+
+
+
+
+
+
+편집 창 > 워크 시트 > 스크립트 (파일) > *.sql
