@@ -101,6 +101,107 @@ SELECT
 	)AS 나머지인원수
 FROM tblinsa;
 	
+/*
+ 
+ 	2. sum()
+ 	- 해당 컬럼의 합을 구한다.
+ 	- number sum(컬럼명)
+ 	- 해당 컬럼 > 숫자형만 가능
+ 	 	
+ */
+
+SELECT * FROM TBLCOMEDIAN;
+SELECT sum(height), sum(weight) FROM TBLCOMEDIAN;
+SELECT sum(first) FROM TBLCOMEDIAN; --ORA-01722: invalid number
+
+
+SELECT
+	sum(BASICPAY) AS "지출 급여 합",
+	sum(SUDANG) AS "지출 수당 합",
+	sum(basicpay) + sum(sudang) AS "총 지출",
+	sum(basicpay + sudang) AS "총 지출"
+FROM tblinsa;
+	
+
+-- SELECT sum(*) FROM tblinsa;(X)
+
+/*
+ 
+ 
+ 	3. avg()
+ 	- 해당 컬럼의 평균값을 구한다.
+ 	- number avg(컬럼명)
+ 	- 숫자형만 적용 가능
+ 	- 해당 컬럼의 평균 값을 구한다.
+ */
+
+-- tblInsa. 평균 급여?
+SELECT sum(basicpay) / 60 FROM tblinsa;
+SELECT sum(basicpay) / count(*) FROM tblinsa;
+SELECT avg(basicpay) FROM tblinsa;
+
+--tblCountry, 평균 인구수?
+SELECT avg(population) FROM TBLCOUNTRY; 			--15588
+SELECT sum(population)/ count(*) FROM TBLCOUNTRY; 	--14475
+SELECT sum(population)/ count(population) FROM TBLCOUNTRY;
+SELECT count(population), count(*) FROM TBLCOUNTRY;
+
+-- 회사 > 성과급 지급 > 출처 > 1팀 공로~
+-- 1. 균등 지급: 총지급액 / 모든 직원수 = sum() / count(*)
+-- 2. 차등 지급: 총지급액 / 1팀 직원수 = sum() / count(1팀) = avg()
+
+SELECT avg(name) FROM TBLINSA;
+SELECT avg(ibsadate) FROM TBLINSA;
+
+/*
+ 	
+ 	
+ 	4. max()
+		- object max(컬럼명)
+		- 최댓값 반환
+ 	 	
+ 	5. min()
+ 		- object min(컬럼명)
+ 		- 최솟값 반환
+ 		
+ 		- 숫자형, 문자형, 날짜형 모두 적용 가능
+ 	  
+ */
+
+SELECT max(sudang), min(sudang) FROM TBLINSA; 		--숫자형
+SELECT max(name), min(name) FROM TBLINSA; 			--문자형
+SELECT max(ibsadate), min(ibsadate) FROM TBLINSA;	--날짜형
+
+SELECT
+	count(*) AS 직원수,
+	sum(basicpay) AS 총급여합,
+	avg(basicpay) AS 평균급여,
+	max(basicpay) AS 최고급여,
+	min(basicpay) AS 최저급여
+FROM TBLINSA;
+
+
+
+-- 집계 함수 사용 시 주의점 !!
+
+-- 1.  ORA-00937: not a single-group group function
+-- 컬럼 리스트에서는 집계함수와 일반컬럼을 동시에 사용할 수 없다.
+SELECT count(*) FROM tblinsa; 	--직원수
+SELECT name FROM tblinsa;		--직원명
+
+-- 요구사항] 직원들 이름과 총직원수를 가져오시오.
+SELECT count(*), name FROM tblinsa; 
+
+-- 2. ORA-00934: group function is not allowed here
+-- where절에는 집계 함수를 사용할 수 없다. 
+-- 집계 함수(집합), 컬럼(개인)
+-- where절 > 개개인(레코드)의 데이터를 접근해서 조건검색 > 집합값 호출 불가
+
+-- 요구사항] 평균 급여보다 더 많이 받는 직원들?
+SELECT avg(basicpay) FROM tblinsa; 
+
+SELECT * FROM tblinsa WHERE basicpay >= avg(basicpay);
+
 
 
 
