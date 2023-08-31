@@ -21,6 +21,12 @@ from tblCountry;
 select population, area, population + area from tblCountry;
 
 
+SELECT * FROM TBLTODO t ;
+
+INSERT INTO TBLTODO (seq, title, adddate, completedate)
+	VALUES (22, '자바 복습하기', sysdate, null);
+
+commit;
 
 
 
