@@ -179,6 +179,7 @@ FROM TBLINSA					--1. 60명의 데이터를 가져온다.
 SELECT
 	buseo,
 	round(avg(basicpay))
+<<<<<<< HEAD
 FROM TBLINSA								--1. 60명
 	GROUP BY BUSEO							--2. 60명 > 그룹
 		HAVING avg(BASICPAY) >= 1500000;	--3. 집합에 대한 조건 > 집계 함수 조건
@@ -352,4 +353,27 @@ FROM TBLINSA
 
 
 	
+=======
+FROM TBLINSA								--1.
+	GROUP BY BUSEO							--2.
+		HAVING avg(BASICPAY) >= 1500000;	--3. 그룹에 대한 조건
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+>>>>>>> a1bab099245f10e02866f77aa986a6b9933553ca
 

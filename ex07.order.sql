@@ -2,7 +2,11 @@
 
 /*
  
+<<<<<<< HEAD
   	[WITH <Sub Query>]
+=======
+  		[WITH <Sub Query>]
+>>>>>>> a1bab099245f10e02866f77aa986a6b9933553ca
     SELECT column_list
     FROM table_name
     [WHERE search_condition]
