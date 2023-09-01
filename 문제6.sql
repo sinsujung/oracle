@@ -9,19 +9,45 @@ FROM TRAFFIC_ACCIDENT;
 
 --2. tblZoo. 종류(family)별 평균 다리의 갯수를 가져오시오.
 
-    
+SELECT
+	*
+FROM tblzoo;
+
+SELECT
+	family AS 종류,
+	round(avg(leg)) AS "평균 다리수"
+FROM tblZoo 
+	GROUP BY family;
     
 
     
 --3. tblZoo. 체온이 변온인 종류 중 아가미 호흡과 폐 호흡을 하는 종들의 갯수를 가져오시오.
+SELECT
+	*
+FROM tblzoo;
 
+SELECT
+	family AS 종류,
+	count(breath)
+FROM tblzoo 
+	WHERE thermo = 'variable'
+		GROUP BY family;
         
         
 
 --4. tblZoo. 사이즈와 종류별로 그룹을 나누고 각 그룹의 갯수를 가져오시오.
 
-        
-        
+SELECT
+	*
+FROM tblzoo;
+
+SELECT
+	family AS 종류별,
+	sizeof AS 사이즈별,
+	count(*) AS 갯수
+FROM tblzoo 
+	GROUP BY sizeof, family
+		ORDER BY family;
         
 
 
@@ -30,14 +56,29 @@ FROM TRAFFIC_ACCIDENT;
 
 --12. tblAddressBook. 관리자의 실수로 몇몇 사람들의 이메일 주소가 중복되었다. 중복된 이메일 주소만 가져오시오.
 
+SELECT
+	*
+FROM tbladdressbook ;
     
-    
+SELECT
+	email
+FROM tbladdressbook 
+	GROUP BY email
+		HAVING count(email) > 1;
 
 
             
 
 --15. tblAddressBook. 성씨별 인원수가 100명 이상 되는 성씨들을 가져오시오.
+SELECT
+	*
+FROM tbladdressbook ;
 
+SELECT
+	DISTINCT(substr(name,1,1))
+FROM tbladdressbook
+	GROUP BY NAME
+		HAVING count(substr(name,1,1)) >= 100;
 
 
 
